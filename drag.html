@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- 拖放元素 -->
+<html>
+  <head>
+    <script>
+      function startDrag(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+      }
+      // 默认不允许放置,阻止默认后才可放置
+      function allowDrag(event) {
+        event.preventDefault();
+      }
+      function endDrag(event) {
+        event.preventDefault();
+        var dragId = event.dataTransfer.getData("Text");
+        event.target.appendChild(document.getElementById(dragId));
+      }
+    </script>
+    <style>
+      #target {
+        width: 150px;
+        height: 100px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="target" ondragover="allowDrag(event)" ondrop="endDrag(event)"></div>
+    <div id="drag" draggable="true" ondragstart="startDrag(event)">SGNB</div>
+  </body>
+</html>
