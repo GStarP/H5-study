@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPos, showError);
+      } else {
+        var loc = document.getElementById("loc");
+        loc.innerHTML = "browser not supported"
+      }
+      function showPos(position) {
+        var loc = document.getElementById("loc");
+        loc.innerHTML = `latitude: ${position.coords.latitude}<br/>longtitude: ${position.coords.longitude}`;
+      }
+      function showError(error) {
+        var loc = document.getElementById("loc");
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            loc.innerHTML="User denied the request for Geolocation."
+            break;
+          case error.POSITION_UNAVAILABLE:
+            loc.innerHTML="Location information is unavailable."
+            break;
+          case error.TIMEOUT:
+            loc.innerHTML="The request to get user location timed out."
+            break;
+          case error.UNKNOWN_ERROR:
+            loc.innerHTML="An unknown error occurred."
+            break;
+        }
+      }
+    </script>
+    <style>
+      #loc {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -200px;
+        width: 400px;
+        height: 200px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loc"></div>
+  </body>
+</html>
