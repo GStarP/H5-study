@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <form>
+      <!-- autocomplete need to use server side so we ignore it-->
+      <form novalidate="true">
+        <!-- TODO: novalidate cannot work properly-->
+        email: <input type="email"><br>
+        autofocus: <input type="text" autofocus><br>
+        required: <input type="text" required><br>
+        <!-- TODO: pattern cannot work properly-->
+        pattern(3 low-case letter): <input type="text" parttern="[a-z]{3}"><br>
+        list: <input type="text" list="nameList">
+        <datalist id="nameList">
+          <option label="zzn" value="zzn"></option>
+          <option label="lxc" value="lxc"></option>
+        </datalist>
+        <input type="submit">
+      </form>
+    </form>
+  </body>
+</html>
