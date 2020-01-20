@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // Web Worker is in external file, so it has no access to window/document/parent
+      // Web Worker does not affect page performance at all
+      function start() {
+        if (typeof Worker !== "undefined") {
+          if (typeof w === "undefined") {
+            w = new Worker("countWorker.js");
+          }
+          w.onmessage = function(event) {
+            document.getElementById("count").innerHTML = event.data;
+          }
+        } else {
+          document.getElementById("count").innerHTML = "browser not support";
+        }
+      }
+      function stop() {
+        w.terminate();
+      }
+    </script>
+  </head>
+  <body>
+    <div id="count">0</div>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+  </body>
+</html>
