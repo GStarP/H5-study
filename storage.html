@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- close page and reopen it, sessionStorage will be cleared but localstorage keeps on adding-->
+    <script>
+      if (sessionStorage.count) {
+        sessionStorage.count = Number(sessionStorage.count) + 1;
+      } else {
+        sessionStorage.count = 1;
+      }
+      document.write(sessionStorage.count);
+      if (localStorage.count) {
+        localStorage.count = Number(localStorage.count) + 1;
+      } else {
+        localStorage.count = 1;
+      }
+      document.write(localStorage.count);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
